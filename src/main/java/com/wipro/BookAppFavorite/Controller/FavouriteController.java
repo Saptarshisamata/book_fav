@@ -34,7 +34,7 @@ public class FavouriteController {
     }
 
     @DeleteMapping("/delete_book")
-    public ResponseEntity<DeleteFavouriteResponse> deleteFavourite(@RequestParam String book_id,@RequestHeader("Authorization") String token){
+    public ResponseEntity<DeleteFavouriteResponse> deleteFavourite(@PathVariable String book_id,@RequestHeader("Authorization") String token){
         DeleteFavouriteResponse response = favouriteService.deleteFavourite(book_id,token);
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
