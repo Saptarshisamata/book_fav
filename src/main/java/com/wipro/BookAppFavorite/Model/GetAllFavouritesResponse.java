@@ -14,5 +14,5 @@ import java.util.List;
 public class GetAllFavouritesResponse {
     private HttpStatus status;
     private String message;
-    private List<Book> favourite_book;
+    private List<Book> favourite_books;
 }
