@@ -1,9 +1,6 @@
 package com.wipro.BookAppFavorite.Service.impl;
 
-import com.wipro.BookAppFavorite.Model.AddToFavouriteResponse;
-import com.wipro.BookAppFavorite.Model.AuthenticatedResponse;
-import com.wipro.BookAppFavorite.Model.Book;
-import com.wipro.BookAppFavorite.Model.GetAllFavouritesResponse;
+import com.wipro.BookAppFavorite.Model.*;
 import com.wipro.BookAppFavorite.Repository.FavouriteRepository;
 import com.wipro.BookAppFavorite.Service.AuthenticationService;
 import com.wipro.BookAppFavorite.Service.FavouriteService;
@@ -39,5 +36,12 @@ public class FavouriteServiceImpl implements FavouriteService {
         AuthenticatedResponse response = authenticationService.Authenticate(token);
         List<Book> books = favouriteRepository.findByEmail(response.getEmail());
         return new GetAllFavouritesResponse(HttpStatus.OK,"favourite_list",books);
+    }
+
+    @Override
+    public DeleteFavouriteResponse deleteFavourite(String book_id,String  token) {
+        AuthenticatedResponse response = authenticationService.Authenticate(token);
+        favouriteRepository.deleteById(book_id);
+        return new DeleteFavouriteResponse(HttpStatus.OK,"deleted");
     }
 }

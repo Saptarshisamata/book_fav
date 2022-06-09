@@ -2,6 +2,7 @@ package com.wipro.BookAppFavorite.Controller;
 
 import com.wipro.BookAppFavorite.Model.AddToFavouriteResponse;
 import com.wipro.BookAppFavorite.Model.Book;
+import com.wipro.BookAppFavorite.Model.DeleteFavouriteResponse;
 import com.wipro.BookAppFavorite.Model.GetAllFavouritesResponse;
 import com.wipro.BookAppFavorite.Service.FavouriteService;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,12 @@ public class FavouriteController {
     @GetMapping("/get_all_favourites")
     public ResponseEntity<GetAllFavouritesResponse> getAllFavourite(@RequestHeader("Authorization") String token){
         GetAllFavouritesResponse response = favouriteService.getAllFavourites(token);
+        return new ResponseEntity<>(response,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete_book")
+    public ResponseEntity<DeleteFavouriteResponse> deleteFavourite(@RequestParam String book_id,@RequestHeader("Authorization") String token){
+        DeleteFavouriteResponse response = favouriteService.deleteFavourite(book_id,token);
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
