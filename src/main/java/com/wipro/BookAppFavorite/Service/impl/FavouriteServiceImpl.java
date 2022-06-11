@@ -12,8 +12,6 @@ import java.util.List;
 @Service
 public class FavouriteServiceImpl implements FavouriteService {
 
-    private final String URL = "http://localhost:3009/api/v1/auth/authenticate";
-
     AuthenticationService authenticationService;
 
     FavouriteRepository favouriteRepository;

@@ -16,7 +16,7 @@ public class AuthenticationService {
         this.restTemplate = restTemplate;
     }
 
-    private final String URL = "http://localhost:3009/api/v1/auth/authenticate";
+    private final String URL = "http://host.docker.internal:3009/api/v1/auth/authenticate";
 
     public AuthenticatedResponse Authenticate(String token){
         HttpHeaders headers = new HttpHeaders();
