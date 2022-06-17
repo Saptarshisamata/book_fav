@@ -13,7 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @Document("favourite_list")
 public class Book {
-
     @Id
     private String _id;
     private String email;
